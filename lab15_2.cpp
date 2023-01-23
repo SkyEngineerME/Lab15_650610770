@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-const int N = 6;
+const int N = 4;
 
 void inputMatrix(double [][N]);
 
@@ -32,12 +32,12 @@ void showMatrix(const bool B[][N])
 	}
 }
 
-void inputMatrix(double B[][N])
+void inputMatrix(double A[][N])
 {
 	for(int i = 0;i < N;i++){
 		cout << "Row " << i+1 << ": ";
 		for (int j = 0; j < N; j++){
-		   cin >> B[i][j];	
+		   cin >> A[i][j];	
 		}
 	}
 }
@@ -45,7 +45,7 @@ void findLocalMax(const double A[][N], bool B[][N])
 {
 	for(int i = 0; i < 1;i++){
 		for (int j = 0; j < N-1; j++){
-		   B[i][j] = 0;
+		   B[i][j] = false;
 		}	
 	}
 	for(int i = N-1; i < N;i++){
@@ -63,8 +63,8 @@ void findLocalMax(const double A[][N], bool B[][N])
 		   B[i][j] = 0;
 		}	
 	}
-  	for(int i = 1; i <= N-2;i++){
-		for (int j = 1; j <= N-2; j++){
+  	for(int i = 1; i < N-1;i++){
+		for (int j = 1; j < N-1; j++){
 			if(A[i][j] >= A[i][j-1] && A[i][j] >= A[i-1][j] && A[i][j]  >= A[i][j+1] && A[i][j] >= A[i+1][j]){
 				B[i][j] = 1;
 			}
@@ -74,5 +74,4 @@ void findLocalMax(const double A[][N], bool B[][N])
 		}
 		
 	}
-
 }
